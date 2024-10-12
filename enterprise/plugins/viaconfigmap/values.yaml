@@ -1,0 +1,4 @@
+plugins:
+  configMaps:
+  - name: plugin-viaconfigmap
+    pluginName: viaconfigmap

@@ -1,0 +1,25 @@
+_format_version: "3.0"
+services:
+- host: httpbin.kong-dp.svc.cluster.local
+  name: httpbin-endpoint
+  path: /
+  plugins:
+  - config:
+      error_message: 'Base Rate Limit: Too many requests, please try again in sometime!'
+      minute: 100
+    name: rate-limiting
+    tags: []
+  port: 8000
+  protocol: http
+  routes:
+  - methods:
+    - GET
+    name: httpbin-endpoint-httpbin-get
+    paths:
+    - ~/httpbin$
+    plugins: []
+    regex_priority: 0
+    strip_path: true
+    tags: []
+  tags: []
+upstreams: []

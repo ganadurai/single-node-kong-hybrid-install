@@ -1,0 +1,26 @@
+openapi: 3.0.0
+info:
+  title: httpbin-endpoint
+  description: oas for the kube deployment of httpbin
+  version: 1.0.0
+
+servers:
+  - url: http://httpbin.kong-dp.svc.cluster.local:8000
+
+x-kong-name: httpbin-endpoint
+x-kong-tag: [ "demo", "httpbin" ]
+
+x-kong-plugin-rate-limiting:
+  config:
+    minute: 100
+    error_message: "Base Rate Limit: Too many requests, please try again in sometime!"
+
+x-kong-route-defaults:
+  # the defaults for the Kong routes generated from 'paths' below
+  # see https://docs.konghq.com/1.2.x/admin-api/#route-object
+  strip_path: true
+  regex_priority: 0
+  
+paths:
+  "/httpbin":
+    get:
