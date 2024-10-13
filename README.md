@@ -2,7 +2,9 @@
 
 This instruction enables Kong enterprise install on a single vm instance on k3d cluster
 
-## Pre-requisite tools/libraries install before executing the install
+## Pre-requisite tools/libraries install
+
+1. Installation
     ```bash
     sudo apt update
     sudo apt-get install git -y
@@ -15,33 +17,35 @@ This instruction enables Kong enterprise install on a single vm instance on k3d 
 
     curl -s https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash
     ```
-
+    
 ## Pre-requisite download source
 
-The location the project is cloned
-cd kong-enterprise-quickstart
-export KONG_ENTERPRISE_QUICKSTART_HOME=$(pwd)
-
-cd $KONG_ENTERPRISE_QUICKSTART_HOME/enterprise/scripts
+1. The location the project is cloned
+    ```bash
+    cd kong-enterprise-quickstart
+    export KONG_ENTERPRISE_QUICKSTART_HOME=$(pwd)
+    
+    cd $KONG_ENTERPRISE_QUICKSTART_HOME/enterprise/scripts
+    ```
 
 ## Installation
 
-### Create cluster
+1. Create cluster
     ```bash
     ./seup-cluster.sh
     ```
 
-### Create control data plane cluster
+2. Create control data plane cluster
     ```bash
     ./seup-control-data-plane.sh
     ```
 
-### Deploy httpbin
+3. Deploy httpbin
     ```bash
     ./deploy-httpbin.sh
     ```
 
-### Deploy kong service and route
+4. Deploy kong service and route
     ```bash
     ./deploy-service-route.sh
     ```
