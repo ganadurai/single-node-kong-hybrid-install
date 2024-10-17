@@ -2,6 +2,8 @@
 
 This instruction enables Kong enterprise install on a single vm instance on k3d cluster
 
+![Overview](images/overview.png)
+
 ## Pre-requisite tools/libraries install
 
 1. Installation
