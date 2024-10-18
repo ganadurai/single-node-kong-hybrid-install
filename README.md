@@ -34,12 +34,12 @@ This instruction enables Kong enterprise install on a single vm instance on k3d 
 
 1. Create cluster
     ```bash
-    ./seup-cluster.sh
+    ./setup-cluster.sh
     ```
 
 2. Create control data plane cluster
     ```bash
-    ./seup-control-data-plane.sh
+    ./setup-control-data-plane.sh
     ```
 
 3. Deploy httpbin
