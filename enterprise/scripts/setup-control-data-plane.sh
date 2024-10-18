@@ -64,6 +64,9 @@ helm install kong kong/kong -n kong \
     --set admin.annotations."service\.beta\.kubernetes\.io/aws-load-balancer-type"="nlb" \
     --set manager.annotations."service\.beta\.kubernetes\.io/aws-load-balancer-type"="nlb"
 
+echo "Waiting 30s for the control plane to initiated...."
+sleep 30;
+
 kubectl wait deploy kong-kong -n kong --for="jsonpath=.status.readyReplicas=1" --timeout=120s; 
 if [[ $? == "0" ]]; then 
     echo "ready"; 
@@ -107,6 +110,9 @@ helm install kong-dataplane kong/kong -n kong-dp \
     --set portalapi.enabled=false \
     --set secretVolumes={kong-cluster-cert} \
     --set proxy.annotations."service\.beta\.kubernetes\.io/aws-load-balancer-type"="nlb"
+
+echo "Waiting 30s for the data plane to initiated...."
+sleep 30;
 
 kubectl wait deploy kong-dataplane-kong -n kong-dp --for="jsonpath=.status.readyReplicas=1" --timeout=120s; 
 if [[ $? == "1" ]]; then 
