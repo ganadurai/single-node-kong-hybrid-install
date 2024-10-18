@@ -44,4 +44,7 @@ spec:
         - containerPort: 8000
 EOF
 
+echo "waiting 20sec for httpbin application initated and running";
+sleep 20
+
 kubectl run testcurl --image=curlimages/curl --rm -it --restart=Never -- curl http://httpbin.kong-dp.svc.cluster.local:8000/get
